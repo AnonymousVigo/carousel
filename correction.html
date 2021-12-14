@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="correction.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="cont">
+            <span class="item item-1"></span>
+            <span class="item item-2"></span>
+            <span class="item item-3"></span>
+        </div>
+    </div>
+
+    <div class="btn-cont">
+        <button id="btn-left">&leftarrow;</button>
+        <button id="btn-right">&rightarrow;</button>
+    </div>
+
+    <script>
+        const leftBtn = document.querySelector('#btn-left');
+        const rightBtn = document.querySelector('#btn-right');
+        const slide = document.querySelector('.cont');
+
+        const contWidth = document.querySelector('.container').clientWidth;
+
+        var x = 0;
+
+        window.addEventListener('click', (e) => {
+            
+            if (e.target == rightBtn) {
+                if(x < 2){
+                    x++;
+                }else{
+                    console.log(x)
+                    x = 0;
+                }
+                slide.style.transform = ` translateX(-${contWidth * x}px) `;
+            } else if(e.target == leftBtn) {
+            if(x > 0){
+                x--;
+            }else{
+                console.log(x)
+                x = 2;
+            }
+                slide.style.transform = ` translateX(-${contWidth * x}px) `;
+            }
+        });
+
+
+        // Now i understand the reason why this is not working
+ 
+        // window.addEventListener('click', (e) => {
+            
+        //     if (e.target == rightBtn) {
+        //         x++;
+        //         slide.style.transform = ` translateX(-${contWidth * x}px) `;
+        //     } else if(e.target == leftBtn) {
+        //         x--;
+        //         slide.style.transform = ` translateX(-${contWidth * x}px) `;
+        //     }
+        //     if(x > 2){
+        //             x = 0;
+        //             console.log(x)
+        //         }else if(x < 0){
+        //             x = 2;
+        //         }
+        // });
+
+
+    </script>
+
+</body>
+
+</html>
